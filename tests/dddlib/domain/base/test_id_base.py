@@ -1,4 +1,4 @@
-﻿"""IdentifierBase のテスト。"""
+"""IdentifierBase のテスト。"""
 
 from typing import ClassVar, Self
 

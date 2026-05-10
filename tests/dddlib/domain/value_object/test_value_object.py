@@ -1,4 +1,4 @@
-﻿"""ValueObject のテスト。"""
+"""ValueObject のテスト。"""
 
 from typing import override
 

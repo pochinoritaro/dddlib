@@ -1,4 +1,4 @@
-﻿"""UUIDIdentifier のテスト。"""
+"""UUIDIdentifier のテスト。"""
 
 from uuid import UUID
 

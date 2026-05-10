@@ -1,4 +1,4 @@
-﻿"""Entity のテスト。"""
+"""Entity のテスト。"""
 
 from typing import ClassVar, Self
 

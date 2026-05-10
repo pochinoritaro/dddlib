@@ -1,4 +1,4 @@
-﻿"""エンティティの基底クラスを定義するモジュール。"""
+"""エンティティの基底クラスを定義するモジュール。"""
 
 from dataclasses import field
 from typing import TYPE_CHECKING, Any, Self, override
