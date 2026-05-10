@@ -80,7 +80,7 @@ wheels = [
 
 [[package]]
 name = "dddlib"
-version = "1.0.0"
+version = "0.1.0"
 source = { editable = "packages/dddlib" }
 
 [package.optional-dependencies]
@@ -123,6 +123,14 @@ dependencies = [
     { name = "dddlib" },
 ]
 
+[package.optional-dependencies]
+all = [
+    { name = "dddlib-cli" },
+]
+cli = [
+    { name = "dddlib-cli" },
+]
+
 [package.dev-dependencies]
 dev = [
     { name = "mypy" },
@@ -133,7 +141,12 @@ dev = [
 ]
 
 [package.metadata]
-requires-dist = [{ name = "dddlib", editable = "packages/dddlib" }]
+requires-dist = [
+    { name = "dddlib", editable = "packages/dddlib" },
+    { name = "dddlib-cli", marker = "extra == 'all'", editable = "packages/dddlib_cli" },
+    { name = "dddlib-cli", marker = "extra == 'cli'", editable = "packages/dddlib_cli" },
+]
+provides-extras = ["cli", "all"]
 
 [package.metadata.requires-dev]
 dev = [
