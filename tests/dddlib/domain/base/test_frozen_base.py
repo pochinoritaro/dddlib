@@ -1,4 +1,4 @@
-﻿"""FrozenBase のテスト。"""
+"""FrozenBase のテスト。"""
 
 from dataclasses import FrozenInstanceError
 

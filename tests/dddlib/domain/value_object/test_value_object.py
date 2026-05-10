@@ -1,35 +1,41 @@
-﻿"""ValueObject のテスト。"""
+"""ValueObject のテスト。"""
+
+from typing import override
 
 import pytest
 from dddlib.domain.value_object import ValueObject
 
 
-class SampleValueObject(ValueObject):
+class SampleValueObject(ValueObject[int]):
     """ValueObject を検証するためのテスト用値オブジェクト。"""
 
     value: int
 
-    def validate(self) -> None:
+    @override
+    def validate(self) -> int:
         """_summary_
 
         Returns:
             _type_: _description_
 
         """
+        return self.value
 
 
-class HTTPStatusCode(ValueObject):
+class HTTPStatusCode(ValueObject[int]):
     """スネークケース変換を検証するためのテスト用値オブジェクト。"""
 
     value: int
 
-    def validate(self) -> None:
+    @override
+    def validate(self) -> int:
         """_summary_
 
         Returns:
             _type_: _description_
 
         """
+        return self.value
 
 
 @pytest.mark.v1_0_0
@@ -59,9 +65,10 @@ def test_to_dict_returns_snake_case_class_name_and_value() -> None:
 @pytest.mark.v1_0_0
 def test_get_value_returns_raw_value() -> None:
     """get_value が保持している値をそのまま返すことを確認する。"""
+    expected_value = 10
     actual = SampleValueObject(value=10)
 
-    assert actual.get_value() == 10
+    assert actual.get_value() == expected_value
 
 
 @pytest.mark.v1_0_0

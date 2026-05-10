@@ -1,4 +1,4 @@
-﻿"""IdentifierBase のテスト。"""
+"""IdentifierBase のテスト。"""
 
 from typing import ClassVar, Self
 
@@ -67,11 +67,15 @@ def test_identifier_base_abstract_factories_raise_not_implemented_error(
     factory_name: str,
     argument: str | int | None,
 ) -> None:
-    """抽象ファクトリの基底実装が NotImplementedError を送出することを確認する。"""
+    """抽象ファクトリの基底実装を確認する。
+
+    NotImplementedError を送出することを確認する。
+    """
     factory = getattr(SampleIdentifier, factory_name)
 
-    with pytest.raises(NotImplementedError):
-        if argument is None:
+    if argument is None:
+        with pytest.raises(NotImplementedError):
             factory()
-        else:
+    else:
+        with pytest.raises(NotImplementedError):
             factory(argument)
