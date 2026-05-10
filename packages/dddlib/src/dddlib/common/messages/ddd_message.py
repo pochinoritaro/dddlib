@@ -2,6 +2,7 @@
 
 from dataclasses import dataclass
 from enum import Enum, EnumType
+from typing import cast, override
 
 
 @dataclass(frozen=True, slots=True)
@@ -66,7 +67,8 @@ class MessageABC(EnumType):
 
     """
 
-    def __getattribute__(cls, name: str) -> Message:
+    @override
+    def __getattribute__(cls, name: str) -> object:
         """EnumメンバーをMessageとして返す。
 
         Args:
@@ -81,7 +83,8 @@ class MessageABC(EnumType):
 
         attr = super().__getattribute__(name)
         if isinstance(attr, cls):
-            return Message(code=attr.code, template=attr.template)
+            message = Message(code=attr.code, template=attr.template)
+            return cast("object", message)
 
         return attr
 
