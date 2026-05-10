@@ -26,6 +26,18 @@ GitHub Actions is configured as follows:
 - CI runs on pull requests and pushes for `develop`, `release/*`, and `hotfix/*`
 - CD is triggered manually for a version tag on `main` and publishes to TestPyPI or PyPI
 
+## Release Process
+
+Release notes and publication follow these steps:
+
+1. Prepare the release content on `release/*`.
+2. Merge the release branch into `main`.
+3. Tag the `main` commit with a version tag such as `v1.2.3`.
+4. Write the release notes for that tag in GitHub Release or `CHANGELOG.md`.
+5. Run the CD workflow manually with `publish_target=testpypi` and `release_ref=v1.2.3`.
+6. Verify the package on TestPyPI.
+7. Run the CD workflow again with `publish_target=pypi` and the same tag when the verification is successful.
+
 ## Start Here
 
 Detailed usage is delegated to each package README.
