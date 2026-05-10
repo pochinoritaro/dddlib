@@ -1,0 +1,83 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Ruff: format",
+            "type": "shell",
+            "command": "uv run ruff format packages",
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "label": "Ruff: format-check",
+            "type": "shell",
+            "command": "uv run ruff format --check packages",
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "label": "Ruff: lint",
+            "type": "shell",
+            "command": "uv run ruff check packages",
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "label": "Ruff: lint-fix",
+            "type": "shell",
+            "command": "uv run ruff check packages --fix",
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "label": "MyPy: typecheck",
+            "type": "shell",
+            "command": "uv run mypy packages",
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "label": "Pytest: test",
+            "type": "shell",
+            "command": "uv run pytest",
+            "group": "test",
+            "problemMatcher": []
+        },
+        {
+            "label": "pyscn: quality",
+            "type": "shell",
+            "command": "uv run pyscn check packages",
+            "group": "test",
+            "problemMatcher": []
+        },
+        {
+            "label": "CI: check",
+            "dependsOrder": "sequence",
+            "dependsOn": [
+                "Ruff: format-check",
+                "Ruff: lint",
+                "MyPy: typecheck",
+                "Pytest: test"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "Fix: format and lint-fix",
+            "dependsOrder": "sequence",
+            "dependsOn": [
+                "Ruff: format",
+                "Ruff: lint-fix"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "Full: check and quality",
+            "dependsOrder": "sequence",
+            "dependsOn": [
+                "CI: check",
+                "pyscn: quality"
+            ],
+            "problemMatcher": []
+        }
+    ]
+}

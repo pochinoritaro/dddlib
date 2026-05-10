@@ -1,0 +1,24 @@
+# Python関連
+__pycache__/
+*.py[cod]
+*$py.class
+
+# 仮想環境
+.venv/
+
+# uv 関連
+.python-version
+
+# キャッシュディレクトリ
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+.pyscn/
+
+# テスト関係
+.coverage
+.VSCodeCounter/
+*.sqlite3
+htmlcov/
+
+*.env

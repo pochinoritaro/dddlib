@@ -1,0 +1,140 @@
+###############################################################################
+# uv workspace 設定
+###############################################################################
+[project]
+name = "dddlib-workspace"
+version = "1.0.0"
+description = "ドメイン駆動開発のモジュール開発ワークスペース"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "dddlib",
+]
+
+[tool.uv.workspace]
+members = [
+    "packages/dddlib",
+    "packages/dddlib_cli",
+]
+
+[tool.uv.sources]
+dddlib = { workspace = true }
+
+[tool.pyright]
+reportGeneralTypeIssues = "none"
+
+###############################################################################
+# 開発用依存関係
+###############################################################################
+[dependency-groups]
+dev = [
+    "mypy>=1.17.1",
+    "pytest>=8.4.1",
+    "pytest-cov>=7.0.0",
+    "pytest-mock>=3.14.1",
+    "ruff>=0.12.10",
+]
+
+###############################################################################
+# Ruff 設定
+###############################################################################
+[tool.ruff]
+exclude = [
+    ".bzr",
+    ".direnv",
+    ".eggs",
+    ".git",
+    ".git-rewrite",
+    ".hg",
+    ".mypy_cache",
+    ".nox",
+    ".pants.d",
+    ".pytype",
+    ".ruff_cache",
+    ".svn",
+    ".tox",
+    ".venv",
+    "__pypackages__",
+    "_build",
+    "buck-out",
+    "build",
+    "dist",
+    "node_modules",
+    "venv",
+]
+line-length = 79
+indent-width = 4
+target-version = "py314"
+
+###############################################################################
+# Ruff Linter 設定
+###############################################################################
+[tool.ruff.lint]
+select = ["ALL"]
+ignore = [
+    "T201",
+    "D400",
+    "D403",
+    "D415",
+    "D106",
+    "D203",
+    "D213",
+    "ERA001",
+    "RET504",
+]
+
+fixable = ["ALL"]
+unfixable = []
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**/*.py" = [
+    "ARG001",
+    "S101",
+    "S105",
+    "SLF001",
+    "INP001",
+]
+"packages/**/__init__.py" = ["F401", "D104"]
+
+
+###############################################################################
+# Ruff Formatter 設定
+###############################################################################
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "lf"
+
+###############################################################################
+# pytest 設定
+###############################################################################
+[tool.pytest.ini_options]
+pythonpath = [
+    "packages/dddlib/src",
+    "packages/dddlib_cli/src",
+]
+addopts = "-v --cov=packages/dddlib/src/dddlib --cov-report=term-missing --cov-report=html"
+python_files = ["test_*.py"]
+testpaths = ["tests"]
+markers = [
+    "reg: リグレッションテスト",
+    "base: 基底クラス、抽象クラスのテスト",
+    "v1_0_0: v1.0.0 で追加されたテスト",
+]                                                             
+
+###############################################################################
+# MyPy 設定
+###############################################################################
+[tool.mypy]
+explicit_package_bases = true
+files = [
+    "packages/dddlib/src",
+    "packages/dddlib_cli/src",
+]
+mypy_path = [
+    "packages/dddlib/src",
+    "packages/dddlib_cli/src",
+]
+python_version = "3.14"
+strict = true

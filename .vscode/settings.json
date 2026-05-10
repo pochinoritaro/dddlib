@@ -1,0 +1,130 @@
+{
+    // Python ファイル専用のエディタ設定
+    "[python]": {
+        // 保存時に Ruff などの fixAll を明示実行できるようにする
+        "editor.codeActionsOnSave": {
+            "source.fixAll": "explicit"
+        },
+        // カーソルを細い縦線にする
+        "editor.cursorStyle": "line-thin",
+        // Python のデフォルトフォーマッタとして Ruff を使う
+        "editor.defaultFormatter": "charliermarsh.ruff",
+        // Python エディタのフォントサイズ
+        "editor.fontSize": 17,
+        // 保存時に自動整形する
+        "editor.formatOnSave": true,
+        // インデントにスペースを使う
+        "editor.insertSpaces": true,
+        // 空白文字を常に表示する
+        "editor.renderWhitespace": "all",
+        // Python のインデント幅
+        "editor.tabSize": 4,
+        // 改行コードを LF に統一する
+        "files.eol": "\n",
+        // 行末の不要な空白を保存時に削除する
+        "files.trimTrailingWhitespace": true
+    },
+    // Chat エディタのフォントサイズ
+    "chat.editor.fontSize": 17,
+    // デバッグコンソールのフォントサイズ
+    "debug.console.fontSize": 17,
+    // セマンティックハイライトを有効化する
+    "editor.semanticHighlighting.enabled": true,
+    // Python 向けのセマンティックトークン色設定
+    "editor.semanticTokenColorCustomizations": {
+        "rules": {
+            // クラス名
+            "class:python": "#4EC9B0",
+            // 関数名
+            "function:python": "#DCDCAA",
+            // 関数名
+            "property": "#008d6a",
+            "property.readonly": "#007155",
+            "property.declaration": "#008d6a",
+            // 名前空間
+            "namespace:python": "#7087EF",
+            // 引数名
+            "parameter:python": "#9CDCFE",
+            // 変数名
+            "variable:python": "#B5CEA8"
+        }
+    },
+    // TextMate ベースのシンタックスハイライト補正
+    "editor.tokenColorCustomizations": {
+        "textMateRules": [
+            {
+                // Python の関数名
+                "scope": "entity.name.function.python",
+                "settings": {
+                    "foreground": "#DCDCAA"
+                }
+            },
+            {
+                // import 文のキーワード
+                "scope": "keyword.control.import.python",
+                "settings": {
+                    "fontStyle": "bold",
+                    "foreground": "#C586C0"
+                }
+            },
+            {
+                // def などの関数定義に関する型キーワード
+                "scope": "storage.type.function.python",
+                "settings": {
+                    "foreground": "#569CD6"
+                }
+            },
+            {
+                // シングルクォート文字列 / ダブルクォート文字列
+                "scope": "string.quoted.single.python, string.quoted.double.python",
+                "settings": {
+                    "foreground": "#CE9178"
+                }
+            },
+            {
+                // 通常の変数やオブジェクト変数
+                "scope": "variable.other.readwrite.python, variable.other.object.python",
+                "settings": {
+                    "foreground": "#B5CEA8"
+                }
+            }
+        ]
+    },
+    // Markdown プレビューのフォントサイズ
+    "markdown.preview.fontSize": 17,
+    // Python の自動 import 補完を有効化する
+    "python.analysis.autoImportCompletions": true,
+    // Python Language Server として Pylance を使う
+    "python.languageServer": "Pylance",
+    // pytest 実行時の引数
+    "python.testing.pytestArgs": [
+        "-v",
+        "--cov=src/dddlib",
+        "--cov-report=term-missing",
+        "--cov-report=html",
+        "tests"
+    ],
+    // テストランナーとして pytest を有効化する
+    "python.testing.pytestEnabled": true,
+    // unittest は使わない
+    "python.testing.unittestEnabled": false,
+    // Ruff の設定ファイルを pyproject.toml から読む
+    "ruff.configuration": "${workspaceFolder}/pyproject.toml",
+    // Ruff 拡張を有効化する
+    "ruff.enable": true,
+    // Ruff formatter の preview 機能は使わない
+    "ruff.format.preview": false,
+    // Ruff の import 解決を現在の環境から行う
+    "ruff.importStrategy": "fromEnvironment",
+    // Ruff の lint 機能を有効化する
+    "ruff.lint.enable": true,
+    // Ruff 実行ファイルのパス
+    // Windows の仮想環境を前提とした設定
+    "ruff.path": [
+        "${workspaceFolder}/.venv/Scripts/ruff"
+    ],
+    // ソース管理入力欄のフォントサイズ
+    "scm.inputFontSize": 17,
+    // 統合ターミナルのフォントサイズ
+    "terminal.integrated.fontSize": 17
+}

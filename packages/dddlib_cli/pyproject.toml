@@ -1,0 +1,33 @@
+###############################################################################
+# dddlib CLI
+###############################################################################
+[project]
+name = "dddlib-cli"
+version = "1.0.0"
+description = "dddlib 用の DDD プロジェクト生成 CLI"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "dddlib>=1.0.0",
+    "typer>=0.15.0",
+    "rich>=14.0.0",
+]
+
+[project.scripts]
+dddlib = "dddlib_cli.cli:app"
+
+###############################################################################
+# ビルド設定
+###############################################################################
+[build-system]
+requires = ["hatchling>=1.27.0"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/dddlib_cli"]
+
+###############################################################################
+# workspace 参照設定
+###############################################################################
+[tool.uv.sources]
+dddlib = { workspace = true }

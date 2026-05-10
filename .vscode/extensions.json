@@ -1,0 +1,18 @@
+{
+    "recommendations": [
+        "ms-python.python", // Python
+        "ms-python.vscode-pylance", // Pylance
+        "charliermarsh.ruff", // Ruff
+        "KevinRose.vsc-python-indent", // Indent
+        "njpwerner.autodocstring", // DocString
+        // Tasks
+        "spencerwmiles.vscode-task-buttons",
+    ],
+    "unwantedRecommendations": [
+        "ms-python.black-formatter", // Black
+        "mikoz.black-py",  // Black
+        "ms-python.flake8", // Flake8
+        "ms-python.isort", // isort
+        "mikoz.isort-formatter", // Black+isort
+    ]
+}
