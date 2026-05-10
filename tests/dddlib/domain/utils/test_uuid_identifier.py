@@ -41,8 +41,11 @@ def test_uuid_identifier_from_string_parses_uuid_string() -> None:
 
 @pytest.mark.v1_0_0
 def test_uuid_identifier_from_string_raises_for_invalid_string() -> None:
-    """from_string が不正な UUID 文字列で ValueError を送出することを確認する。"""
-    with pytest.raises(ValueError):
+    """from_string の不正値を確認する。
+
+    ValueError を送出することを確認する。
+    """
+    with pytest.raises(ValueError, match="UUID"):
         UUIDIdentifier.from_string("invalid")
 
 
@@ -56,8 +59,11 @@ def test_uuid_identifier_from_hex_parses_hex_string() -> None:
 
 @pytest.mark.v1_0_0
 def test_uuid_identifier_from_hex_raises_for_invalid_hex() -> None:
-    """from_hex が不正な 16 進文字列で ValueError を送出することを確認する。"""
-    with pytest.raises(ValueError):
+    """from_hex の不正値を確認する。
+
+    ValueError を送出することを確認する。
+    """
+    with pytest.raises(ValueError, match="UUID"):
         UUIDIdentifier.from_hex("xyz")
 
 
@@ -73,6 +79,9 @@ def test_uuid_identifier_from_int_parses_integer() -> None:
 
 @pytest.mark.v1_0_0
 def test_uuid_identifier_from_int_raises_for_invalid_integer() -> None:
-    """from_int が不正な整数値で ValueError を送出することを確認する。"""
-    with pytest.raises(ValueError):
+    """from_int の不正値を確認する。
+
+    ValueError を送出することを確認する。
+    """
+    with pytest.raises(ValueError, match="128-bit value"):
         UUIDIdentifier.from_int(-1)

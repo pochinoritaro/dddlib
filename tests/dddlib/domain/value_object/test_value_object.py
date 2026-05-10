@@ -65,9 +65,10 @@ def test_to_dict_returns_snake_case_class_name_and_value() -> None:
 @pytest.mark.v1_0_0
 def test_get_value_returns_raw_value() -> None:
     """get_value が保持している値をそのまま返すことを確認する。"""
+    expected_value = 10
     actual = SampleValueObject(value=10)
 
-    assert actual.get_value() == 10
+    assert actual.get_value() == expected_value
 
 
 @pytest.mark.v1_0_0
