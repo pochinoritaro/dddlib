@@ -11,6 +11,14 @@ dependencies = [
     "dddlib",
 ]
 
+[project.optional-dependencies]
+cli = [
+    "dddlib_cli>=1.0.0",
+]
+all = [
+    "dddlib_cli>=1.0.0",
+]
+
 [tool.uv.workspace]
 members = [
     "packages/dddlib",
@@ -19,9 +27,7 @@ members = [
 
 [tool.uv.sources]
 dddlib = { workspace = true }
-
-[tool.pyright]
-reportGeneralTypeIssues = "none"
+dddlib-cli = { workspace = true }
 
 ###############################################################################
 # 開発用依存関係
@@ -34,6 +40,144 @@ dev = [
     "pytest-mock>=3.14.1",
     "ruff>=0.12.10",
 ]
+
+
+###############################################################################
+# Pyright 設定
+###############################################################################
+[tool.pyright]
+include = [
+    "packages/dddlib/src",
+    "packages/dddlib_cli/src",
+    "tests",
+]
+
+exclude = [
+    # Pyright の既定除外
+    "**/node_modules",
+    "**/__pycache__",
+    "**/.*",
+
+    # Python / build / cache 系
+    "**/venv",
+    "**/.venv",
+    "**/.mypy_cache",
+    "**/.pytest_cache",
+    "**/.ruff_cache",
+    "**/.tox",
+    "**/.nox",
+    "**/.pytype",
+    "**/__pypackages__",
+
+    # 生成物
+    "**/build",
+    "**/dist",
+    "**/_build",
+    "**/buck-out",
+]
+
+extraPaths = [
+    "packages/dddlib/src",
+    "packages/dddlib_cli/src",
+]
+
+pythonVersion = "3.14"
+pythonPlatform = "All"
+
+typeCheckingMode = "strict"
+
+useLibraryCodeForTypes = true
+
+###############################################################################
+# 型推論の厳格化
+###############################################################################
+strictListInference = true
+strictDictionaryInference = true
+strictSetInference = true
+analyzeUnannotatedFunctions = true
+strictParameterNoneValue = true
+enableReachabilityAnalysis = true
+disableBytesTypePromotions = true
+
+###############################################################################
+# import / stub
+###############################################################################
+reportMissingImports = "error"
+reportMissingModuleSource = "warning"
+reportMissingTypeStubs = "warning"
+reportImportCycles = "warning"
+
+###############################################################################
+# 基本的な型エラー
+###############################################################################
+reportGeneralTypeIssues = "error"
+reportArgumentType = "error"
+reportAssignmentType = "error"
+reportAttributeAccessIssue = "error"
+reportCallIssue = "error"
+reportIndexIssue = "error"
+reportOperatorIssue = "error"
+reportReturnType = "error"
+reportOptionalMemberAccess = "error"
+reportOptionalSubscript = "error"
+reportOptionalCall = "error"
+reportOptionalIterable = "error"
+reportOptionalContextManager = "error"
+reportOptionalOperand = "error"
+
+###############################################################################
+# Any / Unknown 系
+###############################################################################
+reportAny = "warning"
+reportExplicitAny = "warning"
+reportUnknownArgumentType = "error"
+reportUnknownMemberType = "error"
+reportUnknownParameterType = "error"
+reportUnknownVariableType = "error"
+reportUnknownLambdaType = "error"
+
+###############################################################################
+# 関数 / クラス / 継承
+###############################################################################
+reportMissingParameterType = "error"
+reportMissingTypeArgument = "error"
+reportIncompatibleMethodOverride = "error"
+reportIncompatibleVariableOverride = "error"
+reportInconsistentConstructor = "error"
+reportUninitializedInstanceVariable = "warning"
+reportImplicitOverride = "warning"
+reportMissingSuperCall = "warning"
+reportAbstractUsage = "error"
+reportSelfClsParameterName = "error"
+
+###############################################################################
+# cast / overload / type ignore
+###############################################################################
+reportInvalidCast = "error"
+reportUnnecessaryCast = "warning"
+reportUnnecessaryComparison = "warning"
+reportUnnecessaryContains = "warning"
+reportUnnecessaryIsInstance = "warning"
+reportAssertAlwaysTrue = "warning"
+reportInconsistentOverload = "error"
+reportOverlappingOverload = "error"
+reportNoOverloadImplementation = "error"
+reportIgnoreCommentWithoutRule = "warning"
+
+###############################################################################
+# 到達不能 / 未使用 / 品質系
+###############################################################################
+reportUnreachable = "warning"
+reportUnusedImport = "warning"
+reportUnusedClass = "warning"
+reportUnusedFunction = "warning"
+reportUnusedVariable = "warning"
+reportDuplicateImport = "warning"
+reportWildcardImportFromLibrary = "error"
+reportPrivateUsage = "warning"
+reportConstantRedefinition = "error"
+reportDeprecated = "warning"
+
 
 ###############################################################################
 # Ruff 設定

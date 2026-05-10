@@ -1,7 +1,7 @@
 """識別子を表す値オブジェクトの抽象基底クラスを定義するモジュール。"""
 
 from abc import ABC, abstractmethod
-from typing import Any, ClassVar, Self, cast
+from typing import Any, ClassVar, Self
 
 from dddlib.domain.value_object import ValueObject
 
@@ -33,7 +33,7 @@ class IdentifierBase[T](ValueObject[T], ABC):
         if not isinstance(self.value, self.value_type):
             msg = f"value には {self.value_type.__name__} を指定してください。"
             raise TypeError(msg)
-        return cast("T", self.value)
+        return self.value
 
     @classmethod
     def new(cls) -> Self:

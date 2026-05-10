@@ -1,4 +1,4 @@
-﻿"""Entity のテスト。"""
+"""Entity のテスト。"""
 
 from typing import ClassVar, Self
 
@@ -75,7 +75,10 @@ def test_entity_direct_instantiation_requires_factory() -> None:
 def test_entity_post_init_allows_instantiation_when_factory_flag_exists() -> (
     None
 ):
-    """ファクトリ経路フラグがある場合は __post_init__ を通過することを確認する。"""
+    """ファクトリ経路フラグを確認する。
+
+    ある場合は __post_init__ を通過することを確認する。
+    """
     SampleEntity._from_factory = True
 
     try:
@@ -88,7 +91,10 @@ def test_entity_post_init_allows_instantiation_when_factory_flag_exists() -> (
 
 @pytest.mark.v1_0_0
 def test_entity_base_create_raises_not_implemented_error() -> None:
-    """基底クラスの create 実装が NotImplementedError を送出することを確認する。"""
+    """基底クラスの create 実装を確認する。
+
+    NotImplementedError を送出することを確認する。
+    """
     with pytest.raises(NotImplementedError):
         DelegatingEntity.create(name="sample")
 
@@ -121,6 +127,7 @@ def test_entity_reconstruct_raises_key_error_when_id_is_missing() -> None:
 )
 def test_contains_entity_returns_membership_by_identifier(
     target: SampleEntity,
+    *,
     expected: bool,
 ) -> None:
     """contains_entity が ID 一致で所属判定することを確認する。"""
@@ -155,7 +162,7 @@ def test_entity_base_hash_uses_identifier_hash() -> None:
     """基底の __hash__ が ID のハッシュ値を使うことを確認する。"""
     entity = SampleEntity.create(name="sample")
 
-    assert Entity.__hash__(entity) == hash(entity.id)
+    assert Entity.__hash__(entity) == hash((type(entity), entity.id))
 
 
 @pytest.mark.v1_0_0
