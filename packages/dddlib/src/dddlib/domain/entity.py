@@ -1,7 +1,7 @@
 ﻿"""エンティティの基底クラスを定義するモジュール。"""
 
 from dataclasses import field
-from typing import TYPE_CHECKING, Any, Self
+from typing import TYPE_CHECKING, Any, Self, override
 
 from dddlib.domain.base.frozen_base import FrozenBase
 from dddlib.domain.base.id_base import IdentifierBase
@@ -90,6 +90,7 @@ class Entity[T: IdentifierBase[Any]](FrozenBase):
         """
         return any(existing.id == entity.id for existing in entities)
 
+    @override
     def __eq__(self, other: object) -> bool:
         """同じ型かつ同じIDなら等価とみなす。
 
@@ -106,6 +107,7 @@ class Entity[T: IdentifierBase[Any]](FrozenBase):
             and self.id == other.id
         )
 
+    @override
     def __hash__(self) -> int:
         """ID に基づくハッシュ値を返す。
 
@@ -115,6 +117,7 @@ class Entity[T: IdentifierBase[Any]](FrozenBase):
         """
         return hash((type(self), self.id))
 
+    @override
     def __str__(self) -> str:
         """文字列表現を返す。
 

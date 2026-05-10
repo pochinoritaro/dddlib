@@ -155,7 +155,7 @@ def test_entity_base_hash_uses_identifier_hash() -> None:
     """基底の __hash__ が ID のハッシュ値を使うことを確認する。"""
     entity = SampleEntity.create(name="sample")
 
-    assert Entity.__hash__(entity) == hash(entity.id)
+    assert Entity.__hash__(entity) == hash((type(entity), entity.id))
 
 
 @pytest.mark.v1_0_0

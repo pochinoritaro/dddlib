@@ -1,35 +1,41 @@
 ﻿"""ValueObject のテスト。"""
 
+from typing import override
+
 import pytest
 from dddlib.domain.value_object import ValueObject
 
 
-class SampleValueObject(ValueObject):
+class SampleValueObject(ValueObject[int]):
     """ValueObject を検証するためのテスト用値オブジェクト。"""
 
     value: int
 
-    def validate(self) -> None:
+    @override
+    def validate(self) -> int:
         """_summary_
 
         Returns:
             _type_: _description_
 
         """
+        return self.value
 
 
-class HTTPStatusCode(ValueObject):
+class HTTPStatusCode(ValueObject[int]):
     """スネークケース変換を検証するためのテスト用値オブジェクト。"""
 
     value: int
 
-    def validate(self) -> None:
+    @override
+    def validate(self) -> int:
         """_summary_
 
         Returns:
             _type_: _description_
 
         """
+        return self.value
 
 
 @pytest.mark.v1_0_0
