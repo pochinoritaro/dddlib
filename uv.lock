@@ -80,7 +80,7 @@ wheels = [
 
 [[package]]
 name = "dddlib"
-version = "0.1.0"
+version = "0.1.0a0"
 source = { editable = "packages/dddlib" }
 
 [package.optional-dependencies]
@@ -100,7 +100,7 @@ provides-extras = ["cli", "all"]
 
 [[package]]
 name = "dddlib-cli"
-version = "1.0.0"
+version = "0.1.0a0"
 source = { editable = "packages/dddlib_cli" }
 dependencies = [
     { name = "dddlib" },
@@ -117,7 +117,7 @@ requires-dist = [
 
 [[package]]
 name = "dddlib-workspace"
-version = "1.0.0"
+version = "0.1.0a0"
 source = { virtual = "." }
 dependencies = [
     { name = "dddlib" },

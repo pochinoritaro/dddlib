@@ -3,7 +3,7 @@
 ###############################################################################
 [project]
 name = "dddlib-cli"
-version = "1.0.0"
+version = "0.1.0-alpha"
 description = "dddlib 用の DDD プロジェクト生成 CLI"
 readme = "README.md"
 requires-python = ">=3.14"
