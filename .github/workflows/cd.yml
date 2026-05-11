@@ -21,7 +21,7 @@ permissions:
 
 jobs:
   build:
-    name: build-and-publish
+    name: build
     runs-on: ubuntu-latest
 
     steps:
@@ -53,12 +53,47 @@ jobs:
       - name: Build distributions
         run: uv build
 
+      - name: Upload distributions
+        uses: actions/upload-artifact@v4
+        with:
+          name: dddlib-distributions
+          path: dist/*
+          if-no-files-found: error
+
+  publish-testpypi:
+    name: publish-testpypi
+    needs: build
+    if: ${{ inputs.publish_target == 'testpypi' }}
+    runs-on: ubuntu-latest
+    environment:
+      name: testpypi
+
+    steps:
+      - name: Download distributions
+        uses: actions/download-artifact@v4
+        with:
+          name: dddlib-distributions
+          path: dist
+
       - name: Publish to TestPyPI
-        if: ${{ inputs.publish_target == 'testpypi' }}
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
           repository-url: https://test.pypi.org/legacy/
 
+  publish-pypi:
+    name: publish-pypi
+    needs: build
+    if: ${{ inputs.publish_target == 'pypi' }}
+    runs-on: ubuntu-latest
+    environment:
+      name: pypi
+
+    steps:
+      - name: Download distributions
+        uses: actions/download-artifact@v4
+        with:
+          name: dddlib-distributions
+          path: dist
+
       - name: Publish to PyPI
-        if: ${{ inputs.publish_target == 'pypi' }}
         uses: pypa/gh-action-pypi-publish@release/v1
