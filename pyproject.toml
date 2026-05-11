@@ -2,7 +2,7 @@
 # uv workspace 設定
 ###############################################################################
 [project]
-name = "dddlib-workspace"
+name = "dddlib"
 version = "1.0.0"
 description = "ドメイン駆動開発のモジュール開発ワークスペース"
 readme = "README.md"
