@@ -57,7 +57,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: dddlib-distributions
-          path: packages/dddlib/dist/*
+          path: dist/*
           if-no-files-found: error
 
   publish-testpypi:
