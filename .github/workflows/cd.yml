@@ -51,8 +51,7 @@ jobs:
         run: uv sync --locked --dev
 
       - name: Build distributions
-        working-directory: packages/dddlib
-        run: uv build
+        run: uv build --project packages/dddlib
 
       - name: Upload distributions
         uses: actions/upload-artifact@v4
