@@ -2,8 +2,8 @@
 # uv workspace 設定
 ###############################################################################
 [project]
-name = "dddlib"
-version = "0.1.0-alpha"
+name = "dddlib-workspace"
+version = "0.1.0a1"
 description = "ドメイン駆動開発のモジュール開発ワークスペース"
 readme = "README.md"
 requires-python = ">=3.14"
@@ -13,10 +13,10 @@ dependencies = [
 
 [project.optional-dependencies]
 cli = [
-    "dddlib_cli>=0.1.0-alpha",
+    "dddlib-cli>=0.1.0a1",
 ]
 all = [
-    "dddlib_cli>=0.1.0-alpha",
+    "dddlib-cli>=0.1.0a1",
 ]
 
 [tool.uv.workspace]
