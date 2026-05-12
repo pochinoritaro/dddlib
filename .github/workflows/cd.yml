@@ -51,13 +51,14 @@ jobs:
         run: uv sync --locked --dev
 
       - name: Build distributions
+        working-directory: packages/dddlib
         run: uv build
 
       - name: Upload distributions
         uses: actions/upload-artifact@v4
         with:
           name: dddlib-distributions
-          path: dist/*
+          path: packages/dddlib/dist/*
           if-no-files-found: error
 
   publish-testpypi:
@@ -73,7 +74,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: dddlib-distributions
-          path: dist
+          path: packages/dddlib/dist
 
       - name: Publish to TestPyPI
         uses: pypa/gh-action-pypi-publish@release/v1
@@ -93,7 +94,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: dddlib-distributions
-          path: dist
+          path: packages/dddlib/dist
 
       - name: Publish to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1

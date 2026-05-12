@@ -2,8 +2,8 @@
 # uv 設定
 ###############################################################################
 [project]
-name = "dddlib-core"
-version = "0.1.0"
+name = "dddlib"
+version = "0.1.0a1"
 description = "ドメイン駆動開発のコアモジュール"
 readme = "README.md"
 requires-python = ">=3.14"
@@ -12,10 +12,10 @@ dependencies = []
 
 [project.optional-dependencies]
 cli = [
-    "dddlib_cli>=1.0.0",
+    "dddlib_cli>=0.1.0a1",
 ]
 all = [
-    "dddlib_cli>=1.0.0",
+    "dddlib_cli>=0.1.0a1",
 ]
 
 ###############################################################################
@@ -27,6 +27,12 @@ build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/dddlib"]
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "src/dddlib",
+    "pyproject.toml",
+]
 
 ###############################################################################
 # workspace 参照設定

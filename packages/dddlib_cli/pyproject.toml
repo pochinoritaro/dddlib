@@ -3,12 +3,12 @@
 ###############################################################################
 [project]
 name = "dddlib-cli"
-version = "0.1.0-alpha"
+version = "0.1.0a1"
 description = "dddlib 用の DDD プロジェクト生成 CLI"
 readme = "README.md"
 requires-python = ">=3.14"
 dependencies = [
-    "dddlib>=1.0.0",
+    "dddlib>=0.1.0a1",
     "typer>=0.15.0",
     "rich>=14.0.0",
 ]
@@ -25,6 +25,13 @@ build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/dddlib_cli"]
+
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "src/dddlib_cli",
+    "pyproject.toml",
+]
 
 ###############################################################################
 # workspace 参照設定

@@ -8,7 +8,7 @@ from dddlib.domain.entity import Entity
 if TYPE_CHECKING:
     from collections.abc import Iterable
 
-    from dddlib.domain.base.domain_event import DomainEvent
+    from dddlib.domain.domain_event import DomainEvent
 
 
 class AggregateRoot[T: IdentifierBase[Any]](Entity[T]):
